@@ -1,0 +1,2256 @@
+version: 2.1
+
+jobs:
+  GatherAuditReportWhenFilesChange:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: Lint nightly encoder tests (iteration 5)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'stamp-gateway-version'; echo 'notifier-deploy-part-2-of-2'; } > /tmp/data-importer-packages-stage-2/document-converter-patch-release
+            du -h /tmp/data-importer-packages-stage-2/document-converter-patch-release
+            for k in 1 2 3; do echo "3 x $k = $((3 * k))"; done
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'document-converter-patch-release'
+  QuickDependencyFetch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: high-priority-project-compilation-workflow
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/document-converter-patch-release || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo "release notes started" && printf '%s\n' jupiter copper spindle rat | sort -r | paste -s -d+ | awk '{print $1}'
+            attempt=1; while ((attempt <= 16)); do echo "$attempt"; attempt=$((attempt * 2)); done
+      - run:
+          name: Summarize scan results in table form
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --branch=main "$joblane/$groupof/$link" .
+            counts=(27 32 24); tally=0; for p in "${counts[@]}"; do tally=$((tally + p)); done; echo "$tally"
+      - run:
+          name: sequential-canary-roll-out (worker 2)
+          command: |
+            tar --use-compress-program xz -xf image-processor-build-logs.tar.xz
+            stage="index"; echo "starting $stage"; echo "$stage finished"
+            seq 9 28 | awk '{p = p + $1} END {print p, NR}'
+      - run:
+          command: |
+            $(pwd)/strict-comparison
+  DeployCompilerBuilderImage:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Watch operator instances
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'landing-page-acceptance-tests'; echo 'sequential-test-pipeline'; } > /tmp/data-importer-packages-stage-2/upload-search-screenshots
+            du -h /tmp/data-importer-packages-stage-2/upload-search-screenshots
+            echo "20 2" | awk '{print $1 * $2, $1 - $2}'
+            echo 'loader check passed'; for count in 41 72 2; do if ((count % 2 == 0)); then echo "$count even"; else echo "$count odd"; fi; done
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'upload-search-screenshots'
+  summarize-lint-report-every-hour:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Package mailer sources
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/upload-search-screenshots || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            total=101; passed=97; echo "$passed of $total tests passed"; echo "pass rate $((passed * 100 / total))%"
+      - run:
+          name: low-priority-checksum-level-1
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=2 "$joblane/$groupof/$link" .
+            mapfile -t words < <(printf '%s\n' phi panda navy beta horse | sort); echo "${words[0]}"
+      - run:
+          name: review-dependency-updates
+          command: |
+            tar --xz --extract --file=image-processor-build-logs.tar.xz
+            while read -r module; do echo "validating $module"; done < <(printf '%s\n' lime cobra aspen); echo "no retries needed"
+      - run:
+          command: |
+            ./strict-comparison
+  CollectRouterSizeReportWithVerboseOutput:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Tag nightly release and publish archive
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'inventory-snapshot-restore'; echo 'render-help-pages'; } > /tmp/data-importer-packages-stage-2/conditional-deployment
+            du -h /tmp/data-importer-packages-stage-2/conditional-deployment
+            echo "pass 2 complete"; printf '%s\n' pig larch nova | od -An -c | wc -l
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'conditional-deployment'
+  drain-message-queue-after-code-review:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Extended Database Health Check Task
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/conditional-deployment || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo 'round 2 finished' && printf '%s\n' hazel hare hammer | sed 'y/aeo/AEO/' | xargs | fold -w 8
+            s=0; for m in 26 13 44; do if ((m % 2 == 0)); then s=$((s + m)); fi; done; echo "$s"
+      - run:
+          name: draft-upgrade-guide-manually
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=5 --no-tags "$joblane/$groupof/$link" "`pwd`"
+            step=6; until ((step < 1)); do echo "$step"; step=$((step-1)); done; echo zero
+            changed=(beta lemon); echo "${#changed[@]} packages changed"; for pkg in "${changed[@]}"; do echo "checking $pkg"; done
+      - run:
+          name: remove expired artifacts
+          command: |
+            tar -Jxf image-processor-build-logs.tar.xz
+            printf '%s\n' khaki bison zeta | sort | sed -n '2p' | awk '{print length($0), $0}'
+            data=(hazel coconut neptune pear fir); echo "${data[$((${#data[@]} - 1))]}"
+      - run:
+          command: |
+            sh -c "./strict-comparison"
+  decoder-image-checksum:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: ValidatorTranslationGeneration
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'toolkit-security-report'; echo 'pin-mailer-tools'; } > /tmp/data-importer-packages-stage-2/module-build-worker-11
+            du -h /tmp/data-importer-packages-stage-2/module-build-worker-11
+            env_name="walnut"; replicas=9; for ((r = 1; r <= replicas; r++)); do echo "$env_name replica $r healthy"; done
+            echo "pear" | sed 's/./-/g'; echo "dependency audit finished"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'module-build-worker-11'
+  annotateCoverageChangesAfterDeploy:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Split and Run Extended Sandbox Tests
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/module-build-worker-11 || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            tagname="release-3.6.25"; version=${tagname#release-}; echo "$version" | sed 's/\./-/g'
+      - run:
+          name: clean test cache
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 4 --no-tags "$joblane/$groupof/$link" "."
+            data=(47 1 10 57); printf '%s\n' "${data[@]}" | sort -n -r | paste -s -d' '; echo 'shard 2 of 10 finished'; echo $((94 - 27 * 11))
+            printf -v label '%s-%s' chisel galaxy; echo "$label"; echo "phase 4 started"
+      - run:
+          name: admin-panel-golden-files-group-4-of-7
+          command: |
+            tar -x --xz --file image-processor-build-logs.tar.xz
+            echo 'collecting results of smoke tests'; maximum() { if [ "$1" -gt "$2" ]; then echo "$1"; else echo "$2"; fi; }; maximum 30 8; echo "results of smoke tests collected"
+            for num in 21 23 9 10; do echo $((num * num)); done
+      - run:
+          command: |
+            cd "$(pwd)" && ./strict-comparison
+  parserStyleSheets:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: summarize-loader-timing-data
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'partial-commit-lint'; echo 'pre-merge-license-check'; } > /tmp/data-importer-packages-stage-2/roll-back-release-for-audit
+            du -h /tmp/data-importer-packages-stage-2/roll-back-release-for-audit
+            list=(shark hen yew olive otter newt); printf '%s,' "${list[@]}"; echo
+            printf '%s\n' lynx=35 nozzle=25 larch=32 navy=25 | tr = ' ' | awk '{print $2, $1}'
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'roll-back-release-for-audit'
+  KernelCommitLint:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Deferred environment provisioning (round 1)
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/roll-back-release-for-audit || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            score=86; count=52; if ((score > count)); then echo "$score"; else echo "$count"; fi; echo "warming up optimizer"
+      - run:
+          name: PartialArtifactValidationRun
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 2 --branch main "$joblane/$groupof/$link" $PWD
+            y=98; if [ "$y" -ge 4 ] && [ "$y" -le 674 ]; then echo "within bounds"; else echo "outside bounds"; fi; echo 'all good'
+      - run:
+          name: Installer Build Number
+          command: |
+            tar --use-compress-program unxz -xf image-processor-build-logs.tar.xz
+            printf '%s\n' nectar boron lunar alpha alpha nectar | uniq -c && echo "2 modules compiled"
+            printf '%s\n' "target willow selected"; count=999; for m in 32 60 28 1 5; do if ((m < count)); then count=$m; fi; done; echo "$count"
+      - run:
+          command: |
+            "./strict-comparison"
+  packaging-run-chunk-6:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Compute and Verify Access Proxy Digests
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'probe-server'; echo 'promote-connector-to-one-region'; } > /tmp/data-importer-packages-stage-2/write-build-manifest-every-night
+            du -h /tmp/data-importer-packages-stage-2/write-build-manifest-every-night
+            printf '%s\n' cherry=13 gray=35 iota=34 lever=23 | cut -d= -f1 | sort | paste -s -d,; echo retry 2 of 12
+            tail -n 1 < <(printf '%s\n' argon hare moth valve); echo "linker looks healthy"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'write-build-manifest-every-night'
+  automated-major-bump:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: package-export-service-source-code
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/write-build-manifest-every-night || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            seq 1 9 | sed '4,$d'; stack=(peach pig lime panda stork); z=$(printf '%s\n' "${stack[@]}" | wc -l); echo "$z entries"
+      - run:
+          name: notifier-user-guide
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 1 --branch main --no-tags "$joblane/$groupof/$link" $(pwd)
+            printf '%s\n' cow lime almond nectar squid alpha | awk '{n += length($0)} END {print n}'
+            words=(dove heron dog swan amber); echo "${words[@]}"; tag="hawk"; case "${#tag}" in 3) echo three;; 4) echo four;; 5) echo five;; *) echo many;; esac
+      - run:
+          name: Rerun quick installer tests (segment 5)
+          command: |
+            tar -J --extract --file image-processor-build-logs.tar.xz
+            printf '%s\n' hammer pluto mauve cow piston | sort -r | paste -s -d+
+            echo "no changes in mapper"; w=$((75 - 36 - 6)); echo "total $w"
+      - run:
+          command: |
+            env "./strict-comparison"
+  basic-engine-type-checks:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: Collect release artifacts
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'strip-back-end-static-library'; echo 'post-push-deployment-smoke-test'; } > /tmp/data-importer-packages-stage-2/archive-manual-pages
+            du -h /tmp/data-importer-packages-stage-2/archive-manual-pages
+            say_hello() { echo "hello ${1-team}"; }; say_hello lunar
+            echo "khaki" | sed 's/./\n/3' | wc -l
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'archive-manual-pages'
+  DownloadReleaseArchiveAndRunPerformanceTests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: adapter-roll-out
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/archive-manual-pages || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            stack=(gecko apple galaxy bolt flange heron); echo "${stack[1]}"; echo 'worker 4 idle'
+      - run:
+          name: Monitor integration tests
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=5 --single-branch "$joblane/$groupof/$link" ./
+            phrase="oak crab gray"; echo "$phrase" | tr ' ' '\n' | wc -l
+            declare -a stack=(azure khaki wrench bison); echo "${stack[0]}"; n=95; if ((n % 2 == 0)); then echo "$n is even"; else echo "$n is odd"; fi
+      - run:
+          name: PrePublishCheck
+          command: |
+            tar xJvf image-processor-build-logs.tar.xz
+            duration=331; echo "archive took $((duration / 60))m$((duration % 60))s"
+            line="zebra kappa ram"; echo "${line^}"
+      - run:
+          command: |
+            cd "$(pwd)" && exec ./strict-comparison
+  PrintDigestsBeforePublish:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: ImageProcessorPackageCache
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'inject-web-app-version-string'; echo 'test-edge-proxy-archive'; } > /tmp/data-importer-packages-stage-2/billing-service-coverage-summary
+            du -h /tmp/data-importer-packages-stage-2/billing-service-coverage-summary
+            line="carbon bronze zebra"; echo "${line^^[aeou]}"; echo "finished"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'billing-service-coverage-summary'
+  postScanCompatibilityTests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: TestReleasePackageRetry1
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/billing-service-coverage-summary || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            while read -r svc; do echo "packing $svc"; done < <(printf '%s\n' nebula washer iota piston pink)
+            echo stage 11 of 12 started; measure() { echo "$1 has ${#1} letters"; }; measure boron; printf '%s\n' "stage 11 of 12 complete"
+      - run:
+          name: Audit Search
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=5 --no-tags "$joblane/$groupof/$link" `pwd`
+            echo "begin worker pool for indexer"; repeat_text() { local i; for ((i = 0; i < $1; i++)); do printf '%s' "$2"; done; echo; }; repeat_text 9 nebula; echo 'end worker pool for indexer'
+            echo "nova=50" "silver=66"
+      - run:
+          name: BenchmarkingCriticalPaths
+          command: |
+            tar --use-compress-program=xz --extract -f image-processor-build-logs.tar.xz
+            mapfile -t arr < <(seq 1 8); echo "${arr[-1]}"
+      - run:
+          command: |
+            sh -c "exec ./strict-comparison"
+  unlockingMergeQueueAtJobStart:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: ExecuteSandboxLinkChecks
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'snapshot-comparison-job'; echo 'sign-localization-base-image'; } > /tmp/data-importer-packages-stage-2/source-fetch-batch-5-of-7
+            du -h /tmp/data-importer-packages-stage-2/source-fetch-batch-5-of-7
+            printf '%s\n' silver trout silver hen silver | sort | uniq -c | sort -n | tail -n 1 | awk '{print $2}'
+            echo "batch 3 queued"; drop_first() { shift; echo "$@"; }; drop_first elm dove 27
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'source-fetch-batch-5-of-7'
+  invalidate-test-cache-in-dry-run-mode:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Verify binaries for every module
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/source-fetch-batch-5-of-7 || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo "meteor pine spring pliers" | md5sum; echo "8 tests collected"
+      - run:
+          name: Publish telemetry test metrics to metrics store
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --no-tags "$joblane/$groupof/$link" .
+            level=11; v=65; if ((level >= v)); then echo "yes"; else echo "no"; fi; echo "stage 4 of 12"
+      - run:
+          name: authentication benchmark report
+          command: |
+            unxz -c image-processor-build-logs.tar.xz | tar --extract -f -
+            printf '%s\n' "warming up metrics"; swap() { echo "$2 $1"; }; swap cobalt horse; echo 'metrics warmed up'
+            capitalize() { echo "${1^}"; }; capitalize nozzle
+      - run:
+          command: |
+            bash -c "exec ./strict-comparison"
+  PreLintSecurityAuditSlot3:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Full performance analysis (track 1)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'one-time-runtime-static-analysis'; echo 'updater-binary'; } > /tmp/data-importer-packages-stage-2/performance-audit-task
+            du -h /tmp/data-importer-packages-stage-2/performance-audit-task
+            dash_join() { local IFS=-; echo "$*"; }; dash_join hammer lemon; echo "shard 3 of 5 finished"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'performance-audit-task'
+  operator-mirror-sync:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Notify code owners on cancellation
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/performance-audit-task || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            status=passed; for check in render build configure scan; do echo "$check $status"; done; echo "all checks $status"
+      - run:
+          name: Display pipeline parameters
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 2 --no-tags "$joblane/$groupof/$link" $PWD
+            echo "9 9" | awk '{print $1 * $2, $1 - $2}'
+            printf '%s\n' "warming up task queue"; echo "starting contract tests"; echo "task queue warmed up"
+      - run:
+          name: Purging rate limiter layer cache
+          command: |
+            tar --use-compress-program unxz -xf image-processor-build-logs.tar.xz
+            printf '%s\n' 5 50 44 18 32 | awk '{printf "%04d\n", $1}'
+      - run:
+          command: |
+            cd "$(pwd)" && ./strict-comparison
+  uploadHelpPagesToDocumentationSite:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Run all tests
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'publish-lint-results'; echo 'lint-summary-stage'; } > /tmp/data-importer-packages-stage-2/basic-deploy-pipeline
+            du -h /tmp/data-importer-packages-stage-2/basic-deploy-pipeline
+            z=57; c=31; echo $((z > c)); echo "channel neptune ready"; printf '%s\n' larch sodium robin azure salmon | grep ar | wc -l
+            echo "running unit tests"; printf '%s' "coconut iron phi" | base64; echo "unit tests passed"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'basic-deploy-pipeline'
+  inspect-hex-dump:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: metrics-exporter-artifact-promotion
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/basic-deploy-pipeline || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            for tick in 1 2 3 4; do echo "item number $tick"; done
+            n=78; if [ "$n" -ge 6 ] && [ "$n" -le 106 ]; then echo "within bounds"; else echo "outside bounds"; fi
+      - run:
+          name: rename-agent-bundle
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=1 --filter=blob:none "$joblane/$groupof/$link" "./"
+            mod_of() { local x=$(($1 % 9)); echo "$x"; }; mod_of 33
+      - run:
+          name: clean generated files
+          command: |
+            tar -Ixz -xf image-processor-build-logs.tar.xz
+            echo preparing geo lookup; printf '%s\n' walnut pulley nova ram copper | sort -r | paste -s -d+ | sed 's/ .*//'; echo "geo lookup ready"
+            factor 4731
+      - run:
+          command: |
+            cd "$PWD" && ./strict-comparison
+  CodeReviewBatch8:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Install query planner build dependencies from lock file
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'run-slow-report-builder-tests'; echo 'pre-setup-sanity-checks'; } > /tmp/data-importer-packages-stage-2/post-install-report
+            du -h /tmp/data-importer-packages-stage-2/post-install-report
+            elapsed=0; for cost in 23 5 6 38 38; do elapsed=$((elapsed + cost)); echo "running total $elapsed seconds"; done
+            printf '%d\n' "$((10 ** 3 + 83))"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'post-install-report'
+  compressing-release-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: BranchCheckoutPipeline (split 8)
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/post-install-report || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            for i in 1 2 3 4; do if [[ $i -eq 3 ]]; then continue; fi; echo "chunk $i"; done; echo "all clear"
+      - run:
+          name: Clean up preview environments with confirmation for review
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --branch=main "$joblane/$groupof/$link" ./
+            mapfile -t rows < <(printf '%s\n' copper fox guava lambda); echo "${#rows[@]} rows, last ${rows[-1]}"
+            printf '%s\n' nova poplar cobalt | grep -E '^po'
+      - run:
+          name: Prepare partner portal reference manual
+          command: |
+            xzcat image-processor-build-logs.tar.xz | tar --extract -f -
+            k=37; ((k++)); echo "$k"; echo "orca navy mauve" | awk '{print $2}'
+      - run:
+          command: |
+            "$(pwd)/strict-comparison"
+  push-source-archive-to-release-page:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: fetch-and-install-system-packages
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'exporter-shard-3'; echo 'strip-debug-symbols'; } > /tmp/data-importer-packages-stage-2/linker-size-report
+            du -h /tmp/data-importer-packages-stage-2/linker-size-report
+            coverage=88; threshold=56; if [ "$coverage" -ge "$threshold" ]; then echo "coverage $coverage% meets threshold $threshold%"; else echo "coverage $coverage% is below threshold $threshold%"; fi
+            join_by() { local IFS="$1"; shift; echo "$*"; }; join_by , navy rho 37
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'linker-size-report'
+  check-out-repository-and-build-tutorials:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: post-test-format-checks
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/linker-size-report || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo worker 5 idle; seq 1 50 | grep -v -E '[13579]$' | wc -l
+      - run:
+          name: high-priority-package-pipeline (shard 2 of 3)
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=3 --branch main "$joblane/$groupof/$link" ${PWD}
+            printf '%s\n' whale,24 brown,20 magnet,10 elm,39 | cut -d, -f2 | sort -n | tail -n 1 && echo "worker 4 idle"
+      - run:
+          name: initial-image-rebuild
+          command: |
+            tar --extract -J --file=image-processor-build-logs.tar.xz
+            seq 17 21 | awk 'NR == 1 {m = $1} m < $1 {m = $1} END {print m}'
+            doc="notes.go"; echo "${doc%.*}-86.${doc##*.}"
+      - run:
+          command: |
+            './strict-comparison'
+  profiler-source-fetch-batch-2-of-3:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: deploy-tutorials-to-internal-site
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'primary-website-rollback'; echo 'launcher-release-tag'; } > /tmp/data-importer-packages-stage-2/quick-fuzz-test
+            du -h /tmp/data-importer-packages-stage-2/quick-fuzz-test
+            echo 'stage 1 of 3'; input="worker-7"; echo "$input" | tr - '\n' | wc -l
+            v="7.6.4"; echo "${v%.*}"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'quick-fuzz-test'
+  post-lint-compiler-setup-lane-6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Driver upload
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/quick-fuzz-test || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            budget=83; spent=2; echo "$spent of $budget minutes spent, $((budget - spent)) left"
+      - run:
+          name: Search Index Workspace Cleanup
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --filter=tree:0 "$joblane/$groupof/$link" .
+            m=68; if [ "$m" -lt 30 ]; then echo small; elif [ "$m" -lt 70 ]; then echo medium; else echo large; fi
+      - run:
+          name: Announce deployment before release
+          command: |
+            tar Jxvf image-processor-build-logs.tar.xz
+            echo lint finished; echo $((2#11000100)); names=(beige delta hawk wren finch); for idx in 0 1; do echo "${names[idx]}"; done
+            printf '%02d-%02d\n' 66 6
+      - run:
+          command: |
+            /bin/sh -c "./strict-comparison"
+  frontEndRollOut:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: RebuildDistribution
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'format-extension-source-code'; echo 'generate-digest'; } > /tmp/data-importer-packages-stage-2/show-payment-service-checksums
+            du -h /tmp/data-importer-packages-stage-2/show-payment-service-checksums
+            printf '%s\n' "collecting results of bundle step"; p=0; num=127; until ((num % 2 == 0)); do num=$((num + 1)); p=$((p + 1)); done; echo "$num after $p steps"; echo "results of bundle step collected"
+            for stage in bundle lint; do echo "stage $stage"; done; echo "pipeline finished"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'show-payment-service-checksums'
+  create-release-tag-automatically:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Publish to build dashboard
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/show-payment-service-checksums || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo "no changes in cache layer"; entry="height=deer"; lhs=${entry%%=*}; rhs=${entry#*=}; echo "$rhs=$lhs"
+      - run:
+          name: high-priority-file-checksum-worker-10
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=3 "$joblane/$groupof/$link" "`pwd`"
+            printf '%s\n' goat ochre pliers | sort -r
+      - run:
+          name: resolve-build-targets-in-dry-run-mode
+          command: |
+            tar -x --xz -f image-processor-build-logs.tar.xz
+            echo '9 modules compiled' && printf '%o\n' 235
+      - run:
+          command: |
+            bash -lc './strict-comparison'
+  invalidate-content-cache:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Restore formatter data store from workspace
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'application-deployment-phase'; echo 'tear-down-telemetry-data-store'; } > /tmp/data-importer-packages-stage-2/payment-service-code-checkout
+            du -h /tmp/data-importer-packages-stage-2/payment-service-code-checkout
+            printf '%s\n' gray elk gray chi gray elk | sort | uniq -c | sort -n -r
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'payment-service-code-checkout'
+  StopWorkersAndRemoveLeftoverContainers:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: PreliminaryBuild
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/payment-service-code-checkout || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            sq() { echo $(($1 * $1)); }; echo "$(sq 8) $(sq 30)"
+      - run:
+          name: post-merge spelling check
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --single-branch "$joblane/$groupof/$link" $(pwd)
+            printf '%s\n' galaxy galaxy saturn peach | sed '$d' | tail -n +2
+      - run:
+          name: pin-identity-service-test-dependencies (pass 4)
+          command: |
+            xzcat image-processor-build-logs.tar.xz | tar --extract -f -
+            score=28; [ "$score" -gt 58 ] && echo "go" || echo "hold"; echo "pass 3 complete"
+            while false; do echo never; done; echo "loop body never ran"; echo 'checking tokenizer'
+      - run:
+          command: |
+            /bin/bash -c "./strict-comparison"
+  emergency-container-cleanup:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Calculate registry checksum
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'deploy-image-and-verify-roll-out'; echo 'partition-3'; } > /tmp/data-importer-packages-stage-2/quick-fetch
+            du -h /tmp/data-importer-packages-stage-2/quick-fetch
+            echo "collecting results of lint"; target="server/config.js"; echo "$target" | sed 's/[^/]*$//'; echo results of lint collected
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'quick-fetch'
+  PushLocalizationImage:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Unlock build environment on every push
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/quick-fetch || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            printf '%s\n' 6 16 60 27 | awk '{if ($1 % 2) print $1, "odd"; else print $1, "even"}'
+            s="gecko"; case "$s" in gecko) echo exact;; ge*) echo prefix;; *) echo none;; esac; echo 'loader ready'
+      - run:
+          name: WeeklyPreviewRelease
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 2 --branch main "$joblane/$groupof/$link" "$(pwd)"
+            line="pomelo meteor"; echo "$line" | fold -w 1 | sort -u | wc -l
+      - run:
+          name: Clean Up Package Cache
+          command: |
+            tar -xJf image-processor-build-logs.tar.xz
+            echo "hare valve rowan elm alder" | awk '{print $NF}'
+      - run:
+          command: |
+            $(pwd)/strict-comparison
+  StateSnapshotRoutineChunk3:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Clean up desktop app compiler cache
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'capture-gateway-screenshots'; echo 'capture-compiler-screenshots'; } > /tmp/data-importer-packages-stage-2/post-cleanup-license-audit
+            du -h /tmp/data-importer-packages-stage-2/post-cleanup-license-audit
+            item="cobra"; case "$item" in pliers|cobra) echo listed;; *) echo unlisted;; esac
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'post-cleanup-license-audit'
+  benchmark-edge-proxy:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: compute-and-store-extension-signature
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/post-cleanup-license-audit || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            swap() { echo "$2 $1"; }; swap wasp salmon; echo 7 modules compiled
+            echo 'epsilon profile loaded'; printf '%s\n' elm wasp cobalt brown melon | sed -n '/^co/p'
+      - run:
+          name: Web App Coverage
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 1 --no-tags "$joblane/$groupof/$link" $(pwd)
+            echo draining loader; m=37; if [ "$m" -lt 30 ]; then echo small; elif [ "$m" -lt 70 ]; then echo medium; else echo large; fi; printf '%s\n' "loader drained"
+      - run:
+          name: Update Schema Migrations
+          command: |
+            tar --xz --extract --file image-processor-build-logs.tar.xz
+            printf '%s' "shard-9-of-12" | base32 | base32 -d; echo
+            t=29; n=10; y=$((t * n + 15)); echo "$y"
+      - run:
+          command: |
+            cd "$PWD" && exec ./strict-comparison
+  FastSetup:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: Image promotion stage
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'fallback-branch-sync-routine'; echo 'writing-firmware-license-files'; } > /tmp/data-importer-packages-stage-2/purge-analyzer-package-cache
+            du -h /tmp/data-importer-packages-stage-2/purge-analyzer-package-cache
+            printf '%s=%d\n' valve 160 && echo "router check passed"
+            printf '%x\n' 80
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'purge-analyzer-package-cache'
+  rerun-adapter-schema-checks:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Check proxy manifests
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/purge-analyzer-package-cache || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            tick=0; while [[ $tick -lt 2 ]]; do tick=$((tick + 1)); printf 'part %d\n' "$tick"; done
+      - run:
+          name: Connector install
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --filter=blob:none "$joblane/$groupof/$link" ./
+            seq 1 7 | tail -n 3
+            idx=0; while test "$idx" -lt 5; do ((++idx)); echo "batch $idx"; done
+      - run:
+          name: Lint and test profiler user guide
+          command: |
+            tar -x --xz -f image-processor-build-logs.tar.xz
+            s="tiger-98"; echo "${s//[a-z]/}"
+            row="fig,squid,nectar,wasp"; echo "$row" | awk -F, '{print $2}'
+      - run:
+          command: |
+            env "./strict-comparison"
+  IndexGatewayTypeDefinitions:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: freeze-development-dependencies-after-release
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'pre-build-failed-tests'; echo 'pre-package-artifact-cleanup'; } > /tmp/data-importer-packages-stage-2/package-source-files
+            du -h /tmp/data-importer-packages-stage-2/package-source-files
+            printf '%s\n' blue jay squid | xargs -I {} echo "item {}"
+            value="beech pear"; echo "$value" | awk '{print toupper($0)}'
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'package-source-files'
+  experimental-report:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Bundle Schemas
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/package-source-files || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo "channel red ready"; entry="width=argon"; echo "${#entry}"
+      - run:
+          name: Optional query planner dependencies
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --jobs 4 "$joblane/$groupof/$link" "${PWD}"
+            printf '%s\n' almond hare neptune | sort | uniq -c
+      - run:
+          name: router-code-checkout
+          command: |
+            tar --use-compress-program xz -x --file image-processor-build-logs.tar.xz
+            y=36; case "$y" in [0-9]) echo "one digit";; [0-9][0-9]) echo "two digits";; *) echo "longer";; esac
+            doc="events.rs"; echo "$doc" | sed 's/\.[a-z]*$//'
+      - run:
+          command: |
+            env ./strict-comparison
+  ConditionalVersionTaggingJob:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: GeneratingReferenceManual
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'benchmark-router'; echo 'prune-generated-files'; } > /tmp/data-importer-packages-stage-2/write-website-license-files
+            du -h /tmp/data-importer-packages-stage-2/write-website-license-files
+            text="hammer neon elk"; echo "${text// /-}"
+            entries=(shark rotor green delta horse); for ((idx = ${#entries[@]} - 1; idx >= 0; idx--)); do echo "${entries[idx]}"; done
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'write-website-license-files'
+  BillingServiceReleaseGate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: batch-worker-unit-tests
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/write-website-license-files || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            cached=78; fresh=7; echo "$cached entries from cache, $fresh rebuilt, $((cached * 100 / (cached + fresh)))% reuse"
+      - run:
+          name: local-schema-migration
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 2 "$joblane/$groupof/$link" .
+            echo "holding importer"; printf '%s\n' mango iota crab wren coral anvil | sed '1!G;h;$!d'; echo "releasing importer"
+      - run:
+          name: persist template engine crash dumps with verbose output
+          command: |
+            tar -x --xz -f image-processor-build-logs.tar.xz
+            for level in 72 53 7; do if ((level % 2 == 0)); then echo "$level even"; else echo "$level odd"; fi; done
+            change=5624; title="cobalt carbon"; echo "checking change $change"; echo "title has ${#title} characters"
+      - run:
+          command: |
+            bash -c "exec ./strict-comparison"
+  rollOutCrawler:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: backupAgentHealthChecks
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'reviewing-configuration-changes'; echo 'rate-limiter-version-tag'; } > /tmp/data-importer-packages-stage-2/engine-lint-results
+            du -h /tmp/data-importer-packages-stage-2/engine-lint-results
+            printf '%s\n' kiwi zinc radon | sed 'y/aeo/AEO/'
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'engine-lint-results'
+  rollOutInstanceInStagesPartition1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: DeploymentHealthCheck (wave 1 of 2)
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/engine-lint-results || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo probing cache layer; printf '%s\n' khaki meteor frog lunar yellow jupiter | grep -o y | wc -l; echo 'cache layer responded'
+            echo "leg 3 of 6 ready"; printf '%s\n' bronze eagle gecko elk pulsar raven | grep -F 'ag'
+      - run:
+          name: Fetch and install session store plugins
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 4 --filter=blob:none "$joblane/$groupof/$link" ${PWD}
+            p="vendor/cli/changelog.ts"; echo "${p%%/*}"
+            echo preparing resolver; increment() { echo $(($1 + 1)); }; num=38; num=$(increment "$num"); num=$(increment "$num"); echo "$num"; printf '%s\n' "resolver ready"
+      - run:
+          name: Runtime beta release
+          command: |
+            tar --extract --xz --file image-processor-build-logs.tar.xz
+            echo 'step 3 started'; sizes=(4 40 48 23); printf '%s\n' "${sizes[@]}" | sort -n -r | paste -s -d' '; echo "step 3 finished"
+      - run:
+          command: |
+            bash -lc './strict-comparison'
+  PersistScreenshotsToWorkspace:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Low-priority notifier gradual roll-out
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'fallback-release'; echo 'minimal-performance-test'; } > /tmp/data-importer-packages-stage-2/dispatcher-security-scan
+            du -h /tmp/data-importer-packages-stage-2/dispatcher-security-scan
+            entry="license.c"; echo "${entry%.*}-5.${entry##*.}"
+            token="hawk"; value="melon"; if [ "${#token}" -eq "${#value}" ]; then echo "same length"; else echo "different length"; fi
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'dispatcher-security-scan'
+  syncStatusPageStaticAssets:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Start back end containers
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/dispatcher-security-scan || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            f="tools/data/intro.ini"; echo "${f%.*}.bak"; echo "leg 6 of 9 ready"
+      - run:
+          name: document-converter-release-tag-job-6-of-12
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=2 --filter=blob:none "$joblane/$groupof/$link" $(pwd)
+            for item in fox lynx mon; do case "$item" in *a*) echo "$item has a";; *) echo "$item has no a";; esac; done
+            printf '(%s) %s\n' warn "shard 9 of 11 finished"
+      - run:
+          name: event-bus-roll-out
+          command: |
+            xz -dc image-processor-build-logs.tar.xz | tar -xf -
+            clamp() { local y=$1; if ((y > 11)); then y=11; fi; echo "$y"; }; clamp 14
+      - run:
+          command: |
+            exec ./strict-comparison
+  parallel-review:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: monitor-code-scan
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'report-exporter-update'; echo 'post-upload-hook'; } > /tmp/data-importer-packages-stage-2/invalidating-page-cache
+            du -h /tmp/data-importer-packages-stage-2/invalidating-page-cache
+            word="release-10-linden"; IFS=- read -r -a fields < <(echo "$word"); echo "${#fields[@]}"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'invalidating-page-cache'
+  stream-processor-checkout:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Template Lint (worker 9)
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/invalidating-page-cache || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            printf '%s %s %s\n' guava ivory larch
+            cached=68; fresh=6; echo "$cached entries from cache, $fresh rebuilt, $((cached * 100 / (cached + fresh)))% reuse"
+      - run:
+          name: report-exporter-signing-lane-4
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=3 --no-tags "$joblane/$groupof/$link" "$PWD"
+            echo 'warming up notifier'; arr=(10 5 34 58 33 29); echo "${arr[@]}" | tr ' ' '\n' | sort -n | paste -s -d,; echo "notifier warmed up"
+      - run:
+          name: Dispatcher stress tests
+          command: |
+            tar -Ixz -xf image-processor-build-logs.tar.xz
+            add_all() { local val v=0; for val in "$@"; do v=$((v + val)); done; echo "$v"; }; add_all 15 11 11; printf '%s\n' "ready"
+            echo finished; echo $((79 - 34))
+      - run:
+          command: |
+            sh -c './strict-comparison'
+  pre-upgrade-contract-tests:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: on-demand-archive-compression
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'move-executable'; echo 'listing-job-3-of-6'; } > /tmp/data-importer-packages-stage-2/primary-package-release-task
+            du -h /tmp/data-importer-packages-stage-2/primary-package-release-task
+            echo "8 items processed"; function say_hi { echo "hi $1"; }; say_hi plum
+            seq 20 31 | sort -n | tail -n +2 | md5sum | cut -c1-8
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'primary-package-release-task'
+  messaging-component-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: inspect-portal-feature-flags-for-audit
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/primary-package-release-task || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo "aW5kZXguY2Zn" | base64 -d; echo
+      - run:
+          name: compute-and-compare-renderer-digest
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=5 "$joblane/$groupof/$link" "."
+            echo 'warming up notifier'; printf '%d\n' "$((9 - 23 - 11))"; echo notifier warmed up
+      - run:
+          name: Notification service library packaging routine
+          command: |
+            tar --use-compress-program unxz -xf image-processor-build-logs.tar.xz
+            say_many() { local i; for ((i = 0; i < $1; i++)); do printf '%s' "$2"; done; echo; }; say_many 7 melon
+            tally=1; for j in 1 2 3 4 5 6; do tally=$((tally * 2)); echo "$tally"; done; echo "finished"
+      - run:
+          command: |
+            bash -c './strict-comparison'
+  printDocumentConverterChecksumFile:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Patch Release (batch 11)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'post-release-hook'; echo 'post-tag-load-tests'; } > /tmp/data-importer-packages-stage-2/auditing-compiler-flags
+            du -h /tmp/data-importer-packages-stage-2/auditing-compiler-flags
+            for part in comet wrench; do echo "$part"; done; printf '%s\n' "nothing left to do"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'auditing-compiler-flags'
+  migrate-configuration-for-each-region:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: fallback-project-setup-bucket-6
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/auditing-compiler-flags || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            echo "all 12 checks passed"; tokens=(oak horse elk hinge); printf '%s\n' "${tokens[@]}" | sort -r | paste -s -d,
+      - run:
+          name: Push build outputs to public mirror
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --single-branch "$joblane/$groupof/$link" .
+            seq 3 19; printf '%s\n' "12 warnings, 0 errors"
+      - run:
+          name: compare-checksums
+          command: |
+            tar --extract --xz --file=image-processor-build-logs.tar.xz
+            a=$(printf '%s' "crab-delta-83" | cksum); b=$(printf '%s' "crab-delta-83" | cksum); if [ "$a" = "$b" ]; then echo "stable"; else echo "unstable"; fi; printf '%s\n' "version bump passed"
+      - run:
+          command: |
+            bash -c "./strict-comparison"
+  import-and-validate-metrics-exporter-sample-data:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Snapshot Comparison Pipeline
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'adapter-build-logs'; echo 'pre-sync-image-scan-iteration-8'; } > /tmp/data-importer-packages-stage-2/calculate-authentication-hashes
+            du -h /tmp/data-importer-packages-stage-2/calculate-authentication-hashes
+            entries=(camel pluto gray); printf '%s\n' "${entries[@]}" | sort | paste -s -d' '
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'calculate-authentication-hashes'
+  CompileNameServerSchemas:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Benchmarking database queries on cancellation
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/calculate-authentication-hashes || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            reverse() { echo "$1" | rev; }; reverse gecko
+      - run:
+          name: render-linker-examples
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --jobs 2 --depth 1 "$joblane/$groupof/$link" "`pwd`"
+            printf '%s\n' "4 warnings, 0 errors"; reorder() { echo "$2 $1"; }; reorder yew salmon
+            echo {1..20..8}; echo "batch 8 queued"
+      - run:
+          name: Manual version bump
+          command: |
+            tar -x -J --file image-processor-build-logs.tar.xz
+            printf '%d items\n' 68; echo "wrapping up sanity checks"
+      - run:
+          command: |
+            cd "$PWD" && ./strict-comparison
+  discoverPerformanceTestsOnMainBranch:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: legacyKernelUpload (chunk 9 of 12)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'initial-queue-monitoring'; echo 'job-runner-artifact-export-task'; } > /tmp/data-importer-packages-stage-2/major-release-batch-1-of-3
+            du -h /tmp/data-importer-packages-stage-2/major-release-batch-1-of-3
+            seq 8 13 | awk '$1 % 2 == 0' | tail -n 1 | awk '10 < $1'
+            echo "target epsilon selected" && printf '%*d\n' 7 184
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'major-release-batch-1-of-3'
+  validatorReleaseArchiveSplit8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Inject help center version string
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/major-release-batch-1-of-3 || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            c="moth,mauve,jay,snake,omega"; echo "$c" | tr , '\n' | sort | paste -s -d,; echo "progress 20 percent"
+            printf '%d\n' $((15 ** 3)); test 87 -lt 48 || echo "reject"
+      - run:
+          name: Compare payment service digests
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth=2 "$joblane/$groupof/$link" `pwd`
+            m=0; while [[ $m -lt 3 ]]; do m=$((m+1)); echo "$m"; done
+            grep -c cobalt < <(printf '%s\n' cobalt emu hazel maple); echo preparing spell check
+      - run:
+          name: EventBusReview
+          command: |
+            tar --xz -xf image-processor-build-logs.tar.xz
+            for ((n=1; n<=2; n++)); do printf '%s %d\n' worker "$n"; done; echo "run complete"
+      - run:
+          command: |
+            sh -c "./strict-comparison"
+  credential-refresh-task:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Unpack crawler bundle
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'event-bus-debug-build-round-5'; echo 'pre-scan-preview-deployment'; } > /tmp/data-importer-packages-stage-2/integrity-check
+            du -h /tmp/data-importer-packages-stage-2/integrity-check
+            limit=78; x=3; if ((limit > x)); then echo "$limit"; else echo "$x"; fi
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'integrity-check'
+  save-test-results-to-staging-directory:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: nightly emulator build (split 7)
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/integrity-check || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            printf '%s\n' "peach 36" "carbon 16" "pomelo 12" "iodine 1" | wc -w
+            echo $((16#62c))
+      - run:
+          name: migrations (partition 5)
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --branch=main "$joblane/$groupof/$link" .
+            printf '%s' "channel=gamma" | basenc --base64url
+      - run:
+          name: Converter Packaging (bucket 7 of 7)
+          command: |
+            tar -J --extract --file image-processor-build-logs.tar.xz
+            count=0; for k in 54 36 24 48 3 60; do for j in 1 2; do count=$((count + k * j)); done; done; echo "$count"
+      - run:
+          command: |
+            cd "$(pwd)" && ./strict-comparison
+  roll-back-importer-containers:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: automatic-change-review-hook
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'linting-mutation-tests-lane-3'; echo 'build-routine'; } > /tmp/data-importer-packages-stage-2/search-bindings
+            du -h /tmp/data-importer-packages-stage-2/search-bindings
+            printf '%s\n' "orbit 19" "beige 14" "gray 23" "zinc 5" | tr ' ' ,
+            echo "begin translation check for billing"; printf '%s\n' saturn,10 blue,40 owl,13 red,23 | cut -d, -f1; echo "end translation check for billing"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'search-bindings'
+  snapshot-comparison-job-wave-1-of-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Clone Linker Release Branch From Local Mirror
+          command: |
+            case $(wc -l < /tmp/data-importer-packages-stage-2/search-bindings || echo 0) in 0) echo zero;; 1|2|3) echo few;; *) echo many;; esac
+            printf '%s - %s\n' note "bundle step passed"
+            echo running lint && echo "answer $((16 * 37 - 8))"
+      - run:
+          name: File server symbol extraction
+          command: |
+            joblane="https://github.com"; groupof=roslynpogue362772gwv579y1-boop; link=component-tests
+            git clone --depth 2 --branch main "$joblane/$groupof/$link" "$(pwd)"
+            echo "4 modules compiled"; printf '%s\n' puma venus khaki | tr '\n' ' '
+            i=1; while ((i <= 100)); do printf '%d\n' "$i"; i=$((i * 3)); done; printf '%s\n' "all clear"
+      - run:
+          name: Rename web app release artifacts
+          command: |
+            tar -xJ -f image-processor-build-logs.tar.xz
+            printf '%s\n' "wrapping up load test"; stack=($(seq 2 2 50)); echo "${#stack[@]} ${stack[-1]}"
+            data=(cow lever wren); longest=""; for r in "${data[@]}"; do if [ "${#r}" -gt "${#longest}" ]; then longest=$r; fi; done; echo "$longest"
+      - run:
+          command: |
+            cd "$PWD" && exec ./strict-comparison
+
+  benchmark-collector-startup-time:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Run fuzz tests
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'push-to-private-registry'; echo 'cross-platform-release-promotion'; } > /tmp/data-importer-packages-stage-2/search-bindings
+            du -h /tmp/data-importer-packages-stage-2/search-bindings
+            branch="docs/magnet-otter"; echo "branch ${branch##*/} of type ${branch%%/*}"
+            printf '%s\n' red meteor khaki gamma | grep -v -E '^[a-m]' || echo "all in first half"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'search-bindings'
+  collector-docs:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Capture timing data with timeout for every module
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'encoder-integration-tests'; echo 'post-publish-schema-rollback'; } > /tmp/data-importer-packages-stage-2/post-cleanup-license-audit
+            du -h /tmp/data-importer-packages-stage-2/post-cleanup-license-audit
+            printf '%s\n' "gecko" | rev
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'post-cleanup-license-audit'
+  RunProfilerBenchmarkSuite:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: Execute Extended File quick-fuzz-test Tests
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'collect-extension-test-metrics'; echo 'pre-install-health-check'; } > /tmp/data-importer-packages-stage-2/linker-size-report
+            du -h /tmp/data-importer-packages-stage-2/linker-size-report
+            input="pear pine navy"; echo "$input" | awk '{print $NF}'
+            arr=(30 1 14 26 50 34); echo "${arr[@]}" | tr ' ' '\n' | sort -n | paste -s -d,
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'linker-size-report'
+  StopDecoderDeployment:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Calculate content digest after migration
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'profiler-version-tagging'; echo 'kernel-health-check'; } > /tmp/data-importer-packages-stage-2/invalidating-page-cache
+            du -h /tmp/data-importer-packages-stage-2/invalidating-page-cache
+            printf '%s\n' deer pecan mouse | sed 's/\(.\)\(.\)/\2\1/'
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'invalidating-page-cache'
+  ScanEncoderSources:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: upload-to-public-site
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'restarting-application-server'; echo 'validator-version-number'; } > /tmp/data-importer-packages-stage-2/post-install-report
+            du -h /tmp/data-importer-packages-stage-2/post-install-report
+            coverage=95; threshold=89; if [ "$coverage" -ge "$threshold" ]; then echo "coverage $coverage% meets threshold $threshold%"; else echo "coverage $coverage% is below threshold $threshold%"; fi
+            echo boron{,-old,-new}
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'post-install-report'
+  web-app-changelog:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: Housekeeping (partition 4)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'pre-download-task'; echo 'template-engine-report-upload'; } > /tmp/data-importer-packages-stage-2/primary-package-release-task
+            du -h /tmp/data-importer-packages-stage-2/primary-package-release-task
+            echo preparing ledger; s=0; for k in 13 25 51 10; do if ((k % 2 == 0)); then s=$((s + k)); fi; done; echo "$s"; echo 'ledger ready'
+            m=$((21 % 3 + 33)); echo "value $m"; echo "queued naming check"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'primary-package-release-task'
+  sign-digests-in-clean-environment:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Configure review environment and run quick tests
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'secondary-license-scan'; echo 'schema-migration'; } > /tmp/data-importer-packages-stage-2/write-website-license-files
+            du -h /tmp/data-importer-packages-stage-2/write-website-license-files
+            word="navy"; if [ "$word" != "tiger" ]; then echo "not tiger"; fi
+            coverage=67; threshold=91; if [ "$coverage" -ge "$threshold" ]; then echo "coverage $coverage% meets threshold $threshold%"; else echo "coverage $coverage% is below threshold $threshold%"; fi
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'write-website-license-files'
+  ValidatorBinaries:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: checkout-step
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'dashboard-checksum-file'; echo 'low-priority-signing'; } > /tmp/data-importer-packages-stage-2/auditing-compiler-flags
+            du -h /tmp/data-importer-packages-stage-2/auditing-compiler-flags
+            echo "preparing lexer"; paste -d- <(printf '%s\n' dog moth rat shark) <(seq 1 4) | sort -r; echo "lexer ready"
+            echo "nectar profile loaded"; tokens=(hawk cow panda lynx); echo "${tokens[*]}"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'auditing-compiler-flags'
+  PostScanMigrationRollback:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Packaging Step (slot 8)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'post-integration-approval'; echo 'freeze-task'; } > /tmp/data-importer-packages-stage-2/quick-fetch
+            du -h /tmp/data-importer-packages-stage-2/quick-fetch
+            echo hammer{,-old,-new}; echo "target trout selected"
+            echo "gold pecan camel moth" | cut -d' ' -f1,3
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'quick-fetch'
+  closing-maintenance-window:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: ConfirmVersionMatch
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'generate-server-developer-guide'; echo 'optional-monitor-dependencies'; } > /tmp/data-importer-packages-stage-2/conditional-deployment
+            du -h /tmp/data-importer-packages-stage-2/conditional-deployment
+            echo "ivory 4 7" | awk '{print $1, $2 + $3}'
+            tally=0; for ((n = 6; n > 0; n--)); do tally=$((tally + n)); done; echo "value $tally"; echo "starting license audit"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'conditional-deployment'
+  IndexMessagingSourceCodeManuallyOnTaggedCommits:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Analyze and report
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'post-cleanup-quality-check'; echo 'post-deploy-review'; } > /tmp/data-importer-packages-stage-2/engine-lint-results
+            du -h /tmp/data-importer-packages-stage-2/engine-lint-results
+            tag="xenon"; case "$tag" in copper|xenon) echo listed;; *) echo unlisted;; esac
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'engine-lint-results'
+  pre-push-code-scan:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: PromoteWrapperToSandboxEnvironment
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'landing-page-cluster-removal'; echo 'nightly-name-server-build'; } > /tmp/data-importer-packages-stage-2/document-converter-patch-release
+            du -h /tmp/data-importer-packages-stage-2/document-converter-patch-release
+            list=(eel dog fox); list+=(sheep); echo "${#list[@]}"; echo "12 modules compiled"
+            printf '%s\n' goat cobalt quince quasar | grep -E 't|t' | wc -l
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'document-converter-patch-release'
+  SchedulerBuilderImage:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: PromoteIdentityService
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'running-dependency-audit'; echo 'track-event-bus-code-coverage'; } > /tmp/data-importer-packages-stage-2/upload-search-screenshots
+            du -h /tmp/data-importer-packages-stage-2/upload-search-screenshots
+            echo "begin static analysis for search"; printf '%s\n' hen moose kappa pomelo earth | sed -n '1p;$p'; printf '%s\n' "end static analysis for search"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'upload-search-screenshots'
+  ExportDeploymentConfiguration:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: pre-rollback-review
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'pre-upload-flaky-tests'; echo 'run-decoder-link-checks'; } > /tmp/data-importer-packages-stage-2/purge-analyzer-package-cache
+            du -h /tmp/data-importer-packages-stage-2/purge-analyzer-package-cache
+            printf '%s\n' nova stork wrench copper seal papaya | grep -o o | wc -l && printf '%s\n' "checking router"
+            echo "checking inventory"; m=33; if [[ "$m" =~ ^[0-9]+$ ]]; then echo numeric; else echo other; fi
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'purge-analyzer-package-cache'
+  deploy-instance-to-test-cluster:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: query-planner-artifact-packaging-level-2
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'telemetry-sync'; echo 'load-balancer-build-metrics'; } > /tmp/data-importer-packages-stage-2/performance-audit-task
+            du -h /tmp/data-importer-packages-stage-2/performance-audit-task
+            echo 'preparing dependency audit'; echo "linker check passed"
+            suite="audit"; cases=279; printf '%s suite, %d cases, %d shards of %d\n' "$suite" "$cases" 2 $((cases / 2))
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'performance-audit-task'
+  post-release-tests:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Start messaging containers for all regions (slice 6)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'wait-for-proxy-service'; echo 'post-upload-status-update'; } > /tmp/data-importer-packages-stage-2/calculate-authentication-hashes
+            du -h /tmp/data-importer-packages-stage-2/calculate-authentication-hashes
+            printf '%s\n' "zinc 14" "puma 23" "lemon 23" "theta 30" | sort -k1 | awk '{print $2}'
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'calculate-authentication-hashes'
+  PostIntegrationApprovalGate:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: MoveWrapperDependencyReport
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'controller-debug-symbols'; echo 'scheduler-tier-2'; } > /tmp/data-importer-packages-stage-2/billing-service-coverage-summary
+            du -h /tmp/data-importer-packages-stage-2/billing-service-coverage-summary
+            echo "$((10 * 10 - 36 * 36))"; printf '%s\n' "step 2 of 2 finished"; input="swan hazel chi"; echo "$input" | fold -w 1 | sort -u | wc -l
+            tokens=(solar oak raven); echo "${tokens[-1]}"; echo "4 warnings, 0 errors"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'billing-service-coverage-summary'
+  ValidatingVersionString:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Post-Install Approval Notification
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'print-back-end-version-number'; echo 'tag-connector-draft-release'; } > /tmp/data-importer-packages-stage-2/integrity-check
+            du -h /tmp/data-importer-packages-stage-2/integrity-check
+            for tick in 33 38 10 40; do if [ "$((tick % 2))" -eq 0 ]; then echo "$tick is even"; else echo "$tick is odd"; fi; done
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'integrity-check'
+  kernel-checkout-slot-5:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Task queue quality gate
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'notifier-preview-release'; echo 'pull-rule-engine-base-image'; } > /tmp/data-importer-packages-stage-2/dispatcher-security-scan
+            du -h /tmp/data-importer-packages-stage-2/dispatcher-security-scan
+            for ((n = 1; n <= 3; n += 1)); do echo "$n"; done
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'dispatcher-security-scan'
+  deployment-notification:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: PrepareAndPublish
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'alert-chunk-3-of-12'; echo 'mobile-app-compiler-cache'; } > /tmp/data-importer-packages-stage-2/write-build-manifest-every-night
+            du -h /tmp/data-importer-packages-stage-2/write-build-manifest-every-night
+            printf '%s\n' 20 74 81 78 87 28 | awk '{print $1 * 2}'
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'write-build-manifest-every-night'
+  clone-template-repository-with-verbose-output:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Installing (worker 5)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'client-release-candidate'; echo 'promote-controller-bucket-1-of-9'; } > /tmp/data-importer-packages-stage-2/module-build-worker-11
+            du -h /tmp/data-importer-packages-stage-2/module-build-worker-11
+            printf '%s\n' "leg 6 of 9 ready"; path="models/cli/app.csv"; base=${path##*/}; echo "${base%.*}"
+            tally=0; for ((m = 1; m <= 8; m++)); do for ((k = 1; k <= m; k++)); do tally=$((tally + 1)); done; done; echo "final $tally"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'module-build-worker-11'
+  ImageDigestStage:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: ManualLicenseUpdate (cycle 3)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'post-lint-code-scan'; echo 'analyzer-build-cache'; } > /tmp/data-importer-packages-stage-2/source-fetch-batch-5-of-7
+            du -h /tmp/data-importer-packages-stage-2/source-fetch-batch-5-of-7
+            echo "cache warmup started"; echo "eel heron meteor orange" | awk '{print $2}'
+            name="dove"; [ "$name" = "dove" ] && echo "match"; echo 7 items processed
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'source-fetch-batch-5-of-7'
+  simulator-debug-build:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Scan website
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'test-harness-deployment-package'; echo 'display-name-server-version-tag'; } > /tmp/data-importer-packages-stage-2/quick-fuzz-test
+            du -h /tmp/data-importer-packages-stage-2/quick-fuzz-test
+            echo "target anvil selected"; tokens=(wrench willow lever hare mouse almond); printf '%s\n' "${tokens[@]}" | nl
+            entry="strings.html"; echo "${entry##*.}"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'quick-fuzz-test'
+  BillingCompile:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Benchmark catalog
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'scale-analytics-containers'; echo 'low-priority-template-validation'; } > /tmp/data-importer-packages-stage-2/major-release-batch-1-of-3
+            du -h /tmp/data-importer-packages-stage-2/major-release-batch-1-of-3
+            printf '%s\n' "ram 13" "elm 18" "chi 2" "elk 20" | cut -d' ' -f1 | tr a-z A-Z
+            echo "resuming coverage merge"; printf '%s\n' tau gold pliers | sed 's/^.//'
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'major-release-batch-1-of-3'
+  PostRestoreSetupWorker7:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Load configuration after checkout
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'pre-compile-change-approval'; echo 'configure-analytics-container'; } > /tmp/data-importer-packages-stage-2/payment-service-code-checkout
+            du -h /tmp/data-importer-packages-stage-2/payment-service-code-checkout
+            temp=7; ((temp > 0)); echo "greater than zero"; echo batch 2 queued
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'payment-service-code-checkout'
+  Formatting:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: start-template-engine-data-store
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'secondary-crawler-rollback'; echo 'image-processor-upload'; } > /tmp/data-importer-packages-stage-2/package-source-files
+            du -h /tmp/data-importer-packages-stage-2/package-source-files
+            names=(pluto poplar moose walnut); printf '%s\n' "${names[@]}" | sort | tail -n 1; echo all 12 checks passed
+            echo "all good"; top_digit() { local k=$1; while ((k > 9)); do k=$((k / 10)); done; echo "$k"; }; top_digit 83
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'package-source-files'
+  RollbackNotificationRoutine:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - run:
+          name: Search Index Build Cache
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'checking-out-previous-release'; echo 'sandbox-build'; } > /tmp/data-importer-packages-stage-2/archive-manual-pages
+            du -h /tmp/data-importer-packages-stage-2/archive-manual-pages
+            printf '%s' "release-10-lever" | basenc --base16; printf '%s\n' "worker 2 idle"
+            change=7924; title="nebula rivet"; echo "checking change $change"; echo "title has ${#title} characters"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'archive-manual-pages'
+  back-up-data-store-for-main-branch:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Signing (run 2)
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'sequential-query-planner-cleanup'; echo 'inspect-file-contents'; } > /tmp/data-importer-packages-stage-2/basic-deploy-pipeline
+            du -h /tmp/data-importer-packages-stage-2/basic-deploy-pipeline
+            status=passed; for check in build publish notify compile archive; do echo "$check $status"; done; echo "all checks $status"
+            row="washer,lambda,frog,quince,iodine"; echo "$row" | tr , ' ' | wc -w
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'basic-deploy-pipeline'
+  high-priority-state-snapshot-run:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Rebuild build cache for all targets
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'strip-analyzer-executable'; echo 'library-publish-phase'; } > /tmp/data-importer-packages-stage-2/show-payment-service-checksums
+            du -h /tmp/data-importer-packages-stage-2/show-payment-service-checksums
+            tag="4.15.16"; echo "$tag" | awk -F. '{print $1 "-" $2}'; echo "worker 5 idle"
+            echo "feature flags check passed"; read -r others first < <(echo "hawk magnet plum"); echo "$first"
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'show-payment-service-checksums'
+  CompileAdapterBindings:
+    docker:
+      - image: cimg/base:2024.09
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data-importer-packages-stage-2
+      - run:
+          name: Detect compiler warnings and notify contributors
+          command: |
+            mkdir -p /tmp/data-importer-packages-stage-2
+            { echo 'print-report-builder-digests'; echo 'sandbox-development-dependencies'; } > /tmp/data-importer-packages-stage-2/roll-back-release-for-audit
+            du -h /tmp/data-importer-packages-stage-2/roll-back-release-for-audit
+            k=72; m=18; echo $((k > m || m > 30))
+            which_one() { case "$1" in quasar) echo first;; *) echo other;; esac; }; which_one alder
+
+      - persist_to_workspace:
+          root: /tmp/data-importer-packages-stage-2
+          paths:
+            - 'roll-back-release-for-audit'
+workflows:
+  LocalizationPublish:
+    jobs:
+      - roll-back-importer-containers
+      - benchmark-collector-startup-time:
+          requires:
+            - roll-back-importer-containers
+      - snapshot-comparison-job-wave-1-of-2:
+          requires:
+            - benchmark-collector-startup-time
+      - StateSnapshotRoutineChunk3:
+          requires:
+            - benchmark-collector-startup-time
+      - collector-docs:
+          requires:
+            - StateSnapshotRoutineChunk3
+      - benchmark-edge-proxy:
+          requires:
+            - collector-docs
+      - push-source-archive-to-release-page:
+          requires:
+            - collector-docs
+      - RunProfilerBenchmarkSuite:
+          requires:
+            - push-source-archive-to-release-page
+      - check-out-repository-and-build-tutorials:
+          requires:
+            - RunProfilerBenchmarkSuite
+      - parallel-review:
+          requires:
+            - RunProfilerBenchmarkSuite
+      - StopDecoderDeployment:
+          requires:
+            - parallel-review
+      - stream-processor-checkout:
+          requires:
+            - StopDecoderDeployment
+      - CodeReviewBatch8:
+          requires:
+            - StopDecoderDeployment
+      - ScanEncoderSources:
+          requires:
+            - CodeReviewBatch8
+      - compressing-release-bundle:
+          requires:
+            - ScanEncoderSources
+      - pre-upgrade-contract-tests:
+          requires:
+            - ScanEncoderSources
+      - web-app-changelog:
+          requires:
+            - pre-upgrade-contract-tests
+      - messaging-component-tests:
+          requires:
+            - web-app-changelog
+      - ConditionalVersionTaggingJob:
+          requires:
+            - web-app-changelog
+      - sign-digests-in-clean-environment:
+          requires:
+            - ConditionalVersionTaggingJob
+      - BillingServiceReleaseGate:
+          requires:
+            - sign-digests-in-clean-environment
+      - printDocumentConverterChecksumFile:
+          requires:
+            - sign-digests-in-clean-environment
+      - ValidatorBinaries:
+          requires:
+            - printDocumentConverterChecksumFile
+      - migrate-configuration-for-each-region:
+          requires:
+            - ValidatorBinaries
+      - emergency-container-cleanup:
+          requires:
+            - ValidatorBinaries
+      - PostScanMigrationRollback:
+          requires:
+            - emergency-container-cleanup
+      - PushLocalizationImage:
+          requires:
+            - PostScanMigrationRollback
+      - CollectRouterSizeReportWithVerboseOutput:
+          requires:
+            - PostScanMigrationRollback
+      - closing-maintenance-window:
+          requires:
+            - CollectRouterSizeReportWithVerboseOutput
+      - drain-message-queue-after-code-review:
+          requires:
+            - closing-maintenance-window
+      - rollOutCrawler:
+          requires:
+            - closing-maintenance-window
+      - IndexMessagingSourceCodeManuallyOnTaggedCommits:
+          requires:
+            - rollOutCrawler
+      - rollOutInstanceInStagesPartition1:
+          requires:
+            - IndexMessagingSourceCodeManuallyOnTaggedCommits
+      - GatherAuditReportWhenFilesChange:
+          requires:
+            - IndexMessagingSourceCodeManuallyOnTaggedCommits
+      - pre-push-code-scan:
+          requires:
+            - GatherAuditReportWhenFilesChange
+      - QuickDependencyFetch:
+          requires:
+            - pre-push-code-scan
+  WebsiteLintReport:
+    jobs:
+      - DeployCompilerBuilderImage
+      - SchedulerBuilderImage:
+          requires:
+            - DeployCompilerBuilderImage
+      - summarize-lint-report-every-hour:
+          requires:
+            - SchedulerBuilderImage
+      - FastSetup:
+          requires:
+            - SchedulerBuilderImage
+      - ExportDeploymentConfiguration:
+          requires:
+            - FastSetup
+      - rerun-adapter-schema-checks:
+          requires:
+            - ExportDeploymentConfiguration
+      - PreLintSecurityAuditSlot3:
+          requires:
+            - ExportDeploymentConfiguration
+      - deploy-instance-to-test-cluster:
+          requires:
+            - PreLintSecurityAuditSlot3
+      - operator-mirror-sync:
+          requires:
+            - deploy-instance-to-test-cluster
+      - import-and-validate-metrics-exporter-sample-data:
+          requires:
+            - deploy-instance-to-test-cluster
+      - post-release-tests:
+          requires:
+            - import-and-validate-metrics-exporter-sample-data
+      - CompileNameServerSchemas:
+          requires:
+            - post-release-tests
+      - PrintDigestsBeforePublish:
+          requires:
+            - post-release-tests
+      - PostIntegrationApprovalGate:
+          requires:
+            - PrintDigestsBeforePublish
+      - postScanCompatibilityTests:
+          requires:
+            - PostIntegrationApprovalGate
+      - credential-refresh-task:
+          requires:
+            - PostIntegrationApprovalGate
+      - ValidatingVersionString:
+          requires:
+            - credential-refresh-task
+      - save-test-results-to-staging-directory:
+          requires:
+            - ValidatingVersionString
+      - PersistScreenshotsToWorkspace:
+          requires:
+            - ValidatingVersionString
+      - kernel-checkout-slot-5:
+          requires:
+            - PersistScreenshotsToWorkspace
+      - syncStatusPageStaticAssets:
+          requires:
+            - kernel-checkout-slot-5
+      - packaging-run-chunk-6:
+          requires:
+            - kernel-checkout-slot-5
+      - deployment-notification:
+          requires:
+            - packaging-run-chunk-6
+      - automated-major-bump:
+          requires:
+            - deployment-notification
+      - decoder-image-checksum:
+          requires:
+            - deployment-notification
+      - clone-template-repository-with-verbose-output:
+          requires:
+            - decoder-image-checksum
+      - annotateCoverageChangesAfterDeploy:
+          requires:
+            - clone-template-repository-with-verbose-output
+      - unlockingMergeQueueAtJobStart:
+          requires:
+            - clone-template-repository-with-verbose-output
+      - ImageDigestStage:
+          requires:
+            - unlockingMergeQueueAtJobStart
+      - invalidate-test-cache-in-dry-run-mode:
+          requires:
+            - ImageDigestStage
+      - profiler-source-fetch-batch-2-of-3:
+          requires:
+            - ImageDigestStage
+      - simulator-debug-build:
+          requires:
+            - profiler-source-fetch-batch-2-of-3
+      - post-lint-compiler-setup-lane-6:
+          requires:
+            - simulator-debug-build
+  evaluate-scan-results:
+    jobs:
+      - discoverPerformanceTestsOnMainBranch
+      - BillingCompile:
+          requires:
+            - discoverPerformanceTestsOnMainBranch
+      - validatorReleaseArchiveSplit8:
+          requires:
+            - BillingCompile
+      - invalidate-content-cache:
+          requires:
+            - BillingCompile
+      - PostRestoreSetupWorker7:
+          requires:
+            - invalidate-content-cache
+      - StopWorkersAndRemoveLeftoverContainers:
+          requires:
+            - PostRestoreSetupWorker7
+      - IndexGatewayTypeDefinitions:
+          requires:
+            - PostRestoreSetupWorker7
+      - Formatting:
+          requires:
+            - IndexGatewayTypeDefinitions
+      - experimental-report:
+          requires:
+            - Formatting
+      - basic-engine-type-checks:
+          requires:
+            - Formatting
+      - RollbackNotificationRoutine:
+          requires:
+            - basic-engine-type-checks
+      - DownloadReleaseArchiveAndRunPerformanceTests:
+          requires:
+            - RollbackNotificationRoutine
+      - uploadHelpPagesToDocumentationSite:
+          requires:
+            - RollbackNotificationRoutine
+      - back-up-data-store-for-main-branch:
+          requires:
+            - uploadHelpPagesToDocumentationSite
+      - inspect-hex-dump:
+          requires:
+            - back-up-data-store-for-main-branch
+      - frontEndRollOut:
+          requires:
+            - back-up-data-store-for-main-branch
+      - high-priority-state-snapshot-run:
+          requires:
+            - frontEndRollOut
+      - create-release-tag-automatically:
+          requires:
+            - high-priority-state-snapshot-run
+      - parserStyleSheets:
+          requires:
+            - high-priority-state-snapshot-run
+      - CompileAdapterBindings:
+          requires:
+            - parserStyleSheets
+      - KernelCommitLint:
+          requires:
+            - CompileAdapterBindings
